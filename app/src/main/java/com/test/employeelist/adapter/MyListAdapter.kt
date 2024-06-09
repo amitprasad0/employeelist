@@ -5,13 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.ToggleButton
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.test.employeelist.R
 import com.test.employeelist.models.EmpModelClass
-import java.util.ArrayList
+
 
 class MyListAdapter(
     tasksList: List<EmpModelClass>,
@@ -54,18 +56,19 @@ class MyListAdapter(
             )
         }
         if (tasks.isActivate == "1") {
-            holder.button_toggle.isChecked = true
-        } else {
-            holder.button_toggle.isChecked = false
+            holder.rb_activate.isChecked = true
         }
-        holder.button_toggle.setOnClickListener {
-            if ( holder.button_toggle.isChecked()) {
+        else {
+            holder.rb_deactivate.isChecked = true
+        }
+
+        holder.rg_activate.setOnCheckedChangeListener({ group, checkedId ->
+            if (holder.rb_activate.isChecked()) {
                 onItemClickValue.onIsActivateClicked(tasks)
-            } else {
+            } else if (holder.rb_deactivate.isChecked()) {
                 onItemClickValue.onIsDeactivateClicked(tasks)
             }
-
-        }
+        })
         holder.itemView.setOnClickListener {
             clickListener(tasks)
             //    val i = Intent(context, AddOrEditActivity::class.java)
@@ -90,10 +93,11 @@ class MyListAdapter(
         var designation: TextView = view.findViewById(R.id.textViewDesignation) as TextView
         var department: TextView = view.findViewById(R.id.textViewDepartment) as TextView
         var list_item: LinearLayout = view.findViewById(R.id.linearLayout) as LinearLayout
-        var button_toggle: ToggleButton = view.findViewById(R.id.button_toggle) as ToggleButton
-
-
         var status: TextView = view.findViewById(R.id.textViewStatus) as TextView
+
+        var rg_activate: RadioGroup = view.findViewById(R.id.rg_activate) as RadioGroup
+        var rb_activate: RadioButton = view.findViewById(R.id.rb_activate) as RadioButton
+        var rb_deactivate: RadioButton = view.findViewById(R.id.rb_deactivate) as RadioButton
 
     }
 
