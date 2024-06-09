@@ -7,8 +7,8 @@
     <color name="colorUnSuccess">#fd2b01</color>
     <color name="cardview_dark_background">#FF424242</color>
     <color name="white">#FFFFFF</color>
-    <color name="pink">#4A4949</color>
-    <color name="dark_pink">#000000</color>
+    <color name="medium_gray">#4A4949</color>
+    <color name="dark_gray">#000000</color>
     <color name="transparent">#00F84545</color>
     <color name="gray">#8E8E8E</color>
 
